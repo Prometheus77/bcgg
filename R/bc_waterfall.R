@@ -10,12 +10,13 @@
 #' @param anchor.final Whether to anchor the last bar in the waterfall. Default is TRUE.
 #' @param width Bar width in units, where 1 means the edges of the bars touch. Default = 0.8.
 #' @param fill.values Fill colors to use on waterfall, in order of 'pos', 'neg', 'anchor'. Default is `c('green', 'red', 'navy')`.
-#' @param text Show numerical values as text for each column? Default is `TRUE`.
+#' @param segment.label Show numerical values as text for each non-anchor column? Default is `TRUE`.
+#' @param anchor.label Show numerical values as text for each anchor column? Default is `TRUE`.
 #' @param text.format Format to use to display text values as a text string. Uses `sprintf()`. Default is '%.1f', which rounds the number to one decimal place.
 #'
 #' @export
 bc_waterfall <- function(.data, labels, values, incremental = TRUE, anchors = NULL, anchor.final = TRUE, width = 0.8,
-                         fill.values = c('green', 'red', 'navy'), text = TRUE, text.format = '%.1f') {
+                         fill.values = c('green', 'red', 'navy'), segment.label = TRUE, anchor.label = TRUE, text.format = '%.1f') {
   labels_q <- enquo(labels)
   values_q <- enquo(values)
 
@@ -52,8 +53,8 @@ bc_waterfall <- function(.data, labels, values, incremental = TRUE, anchors = NU
                                                       .incr.values < 0 ~ 'neg',
                                                       TRUE ~ 'pos'),
                         .direction = factor(.direction, levels = c('pos', 'neg', 'anchor')),
-                        .label = sprintf(text.format, .abs.values),
-                        .label_y = ifelse(.anchors, .abs.values * 1.05, (.ymax + .ymin) / 2))
+                        .segment.label = ifelse(.anchors, NA, sprintf(text.format, .incr.values)),
+                        .anchor.label = ifelse(!.anchors, NA, sprintf(text.format, .abs.values)))
 
   .plot = ggplot(.data, aes(x = .label.order)) +
     geom_step(aes(y = .abs.values), linetype = "dashed") +
@@ -63,8 +64,12 @@ bc_waterfall <- function(.data, labels, values, incremental = TRUE, anchors = NU
     scale_y_continuous(name = quo_name(values_q)) +
     theme(legend.position = 'none')
 
-  if (text == TRUE) {
-    .plot = .plot + geom_text(aes(label = .label, y = .label_y))
+  if (segment.label) {
+    .plot = .plot + geom_label(aes(label = .segment.label, y = (.ymax + .ymin) / 2))
+  }
+
+  if (anchor.label) {
+    .plot = .plot + geom_text(aes(label = .anchor.label, y = .abs.values * 1.05))
   }
 
   .plot
