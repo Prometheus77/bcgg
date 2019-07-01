@@ -82,7 +82,3 @@ make_absolute <- function(.data, values) {
   dplyr::mutate(.data,
                 .abs.values = cumsum(!!values_q))
 }
-
-return_label <- function(.data, .label.order) {
-  .data$.labels[.label.order]
-}
