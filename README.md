@@ -16,3 +16,14 @@ If that doesn't work, check to make sure that the devtools package is installed.
 ```R
 install.packages("devtools")
 ```
+
+# Usage
+Here is some example code that will create a simple waterfall plot:
+```R
+library(bcgg)
+
+mydata <- data.frame(Reason = c("2018", "Mix shift", "PC", "Mac", "Linux", "Mobile", "2019"),
+                     Clickthrough_rate_bps = c(50, -10, 2, 4, 1, 3, 0))
+
+bc_waterfall(mydata, Reason, Clickthrough_rate_bps)
+```
