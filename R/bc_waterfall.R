@@ -50,8 +50,8 @@ bc_waterfall <- function(.data, labels, values, incremental = TRUE, anchors = NU
                         .xmax = .label.order + width / 2,
                         .direction = dplyr::case_when(.anchors == TRUE ~ 'anchor',
                                                       .incr.values < 0 ~ 'neg',
-                                                      TRUE ~ 'pos') %>%
-                          factor(levels = c('pos', 'neg', 'anchor')),
+                                                      TRUE ~ 'pos'),
+                        .direction = factor(.direction, levels = c('pos', 'neg', 'anchor')),
                         .label = sprintf(text.format, .abs.values),
                         .label_y = ifelse(.anchors, .abs.values * 1.05, (.ymax + .ymin) / 2))
 
