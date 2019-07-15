@@ -30,7 +30,7 @@ bc_waterfall(.data, labels, values, incremental = TRUE, anchors = NULL,
 
 \item{anchor.label}{Show numerical values as text for each anchor column? Default is `TRUE`.}
 
-\item{text.format}{Format to use to display text values as a text string. Uses `sprintf()`. Default is '%.1f', which rounds the number to one decimal place.}
+\item{text.format}{Format to use to display text values as a text string. Uses `sprintf()`. Default is '\%.1f', which rounds the number to one decimal place.}
 }
 \description{
 Creates a waterfall plot showing sources of variance as rectangular segments connected by dotted lines

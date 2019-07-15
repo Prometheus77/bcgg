@@ -12,7 +12,7 @@
 #' @param fill.values Fill colors to use on waterfall, in order of 'pos', 'neg', 'anchor'. Default is `c('green', 'red', 'navy')`.
 #' @param segment.label Show numerical values as text for each non-anchor column? Default is `TRUE`.
 #' @param anchor.label Show numerical values as text for each anchor column? Default is `TRUE`.
-#' @param text.format Format to use to display text values as a text string. Uses `sprintf()`. Default is '%.1f', which rounds the number to one decimal place.
+#' @param text.format Format to use to display text values as a text string. Uses `sprintf()`. Default is '\%.1f', which rounds the number to one decimal place.
 #'
 #' @export
 bc_waterfall <- function(.data, labels, values, incremental = TRUE, anchors = NULL, anchor.final = TRUE, width = 0.8,

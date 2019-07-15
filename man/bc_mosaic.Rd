@@ -21,11 +21,11 @@ bc_mosaic(.data, x.group, y.group, values, fill.values = NULL,
 
 \item{segment.label}{For each segment, show 'value', 'percent', or 'none'? Default is 'value'.}
 
-\item{segment.format}{Format to use to display segment values as a text string. Uses `sprintf()`. Default is '%0.1f' for 'value' or '%0.1f%' for 'percent'.}
+\item{segment.format}{Format to use to display segment values as a text string. Uses `sprintf()`.}
 
 \item{total.label}{Show the total for each x.group? Default is `FALSE`.}
 
-\item{total.format}{Format to use to display totals as a text string. Uses `sprintf()`. Default is '%0.0f'.}
+\item{total.format}{Format to use to display totals as a text string. Uses `sprintf()`.}
 }
 \description{
 Creates a mosaic plot showing rectangular segments sized by both height and width parameters.

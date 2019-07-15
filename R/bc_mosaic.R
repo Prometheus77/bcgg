@@ -8,9 +8,9 @@
 #' @param values The column name showing the value to use to determine the size of the segments
 #' @param fill.values Fill colors to use for y.group.
 #' @param segment.label For each segment, show 'value', 'percent', or 'none'? Default is 'value'.
-#' @param segment.format Format to use to display segment values as a text string. Uses `sprintf()`. Default is '%0.1f' for 'value' or '%0.1f%' for 'percent'.
+#' @param segment.format Format to use to display segment values as a text string. Uses `sprintf()`.
 #' @param total.label Show the total for each x.group? Default is `FALSE`.
-#' @param total.format Format to use to display totals as a text string. Uses `sprintf()`. Default is '%0.0f'.
+#' @param total.format Format to use to display totals as a text string. Uses `sprintf()`.
 #'
 #' @export
 bc_mosaic <- function(.data, x.group, y.group, values, fill.values = NULL, segment.label = 'value', segment.format = NULL, total.label = FALSE, total.format = '%0.0f') {
