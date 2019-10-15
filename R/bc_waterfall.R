@@ -59,7 +59,7 @@ bc_waterfall <- function(.data, labels, values, incremental = TRUE, anchors = NU
   .plot = ggplot(.data, aes(x = .label.order)) +
     geom_step(aes(y = .abs.values), linetype = "dashed") +
     geom_rect(aes(xmin = .xmin, xmax = .xmax, ymin = .ymin, ymax = .ymax, fill = .direction), color = "black") +
-    scale_fill_manual(values = fill.values) +
+    scale_fill_manual(values = c('pos' = fill.values[1], 'neg' = fill.values[2], 'anchor' = fill.values[3])) +
     scale_x_continuous(breaks = .data$.label.order, labels = .data$.labels, name = quo_name(labels_q)) +
     scale_y_continuous(name = quo_name(values_q)) +
     theme(legend.position = 'none')
